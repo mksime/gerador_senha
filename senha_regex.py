@@ -14,23 +14,15 @@ for i in sinais:
 
 total = sinais + maiusculas + minusculas + numeros
 
-codigo = re.compile(fr'(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[{{numeros}}])')
+codigo = re.compile(r'(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!#$%&()*+,\-.:;<>?@\[\]{}])')
 while True:
     senha = ""
-    sinal = False
-    maiuscula = False
-    minuscula = False
-    numero = False
     for i in range(8):
         senha += random.choice(total)
     
     verifica = codigo.search(senha)
-    if verifica == None:
-        print("deu merda")
+    if verifica != None:
         print(senha)
-    else:
-        print('yay')
         break
-
 
 print(senha)
